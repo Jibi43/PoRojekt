@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Browse">
+  <grid id="27dc6" binding="Browse_Panel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <tabbedpane id="3f334" binding="tabbedPane1" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="200" height="200"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="20561" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Browse"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <scrollpane id="30e03">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="77595" class="javax.swing.JTable" binding="Book_Table">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="611f5" class="javax.swing.JButton" binding="Button_Return">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Return"/>
+                </properties>
+              </component>
+              <component id="cd5bb" class="javax.swing.JButton" binding="Button_Remove">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Remove"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="92408" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Form"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="b4891" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="51" height="16"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Title"/>
+                </properties>
+              </component>
+              <component id="bbc07" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="51" height="16"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Genre"/>
+                </properties>
+              </component>
+              <component id="dfd5" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="51" height="16"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Author"/>
+                </properties>
+              </component>
+              <component id="dd736" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="51" height="16"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Year"/>
+                </properties>
+              </component>
+              <component id="e59b5" class="javax.swing.JButton" binding="Button_Add">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Add"/>
+                </properties>
+              </component>
+              <component id="17d8" class="javax.swing.JTextField" binding="Text_Title">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="88c88" class="javax.swing.JTextField" binding="Text_Genre">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="b3fc5" class="javax.swing.JTextField" binding="Text_Author">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="4bc62" class="javax.swing.JComboBox" binding="Combo_Year">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <model>
+                    <item value="1900"/>
+                    <item value="1901"/>
+                    <item value="1902"/>
+                    <item value="1903"/>
+                    <item value="1904"/>
+                    <item value="1905"/>
+                    <item value="1906"/>
+                    <item value="1907"/>
+                    <item value="1908"/>
+                    <item value="1909"/>
+                    <item value="1910"/>
+                    <item value="1911"/>
+                    <item value="1912"/>
+                    <item value="1913"/>
+                    <item value="1914"/>
+                    <item value="1915"/>
+                    <item value="1916"/>
+                    <item value="1917"/>
+                    <item value="1918"/>
+                    <item value="1919"/>
+                    <item value="1920"/>
+                    <item value="1921"/>
+                    <item value="1922"/>
+                    <item value="1923"/>
+                    <item value="1924"/>
+                    <item value="1925"/>
+                    <item value="1926"/>
+                    <item value="1927"/>
+                    <item value="1928"/>
+                    <item value="1929"/>
+                    <item value="1930"/>
+                    <item value="1931"/>
+                    <item value="1932"/>
+                    <item value="1933"/>
+                    <item value="1934"/>
+                    <item value="1935"/>
+                    <item value="1936"/>
+                    <item value="1937"/>
+                    <item value="1938"/>
+                    <item value="1939"/>
+                    <item value="1940"/>
+                    <item value="1941"/>
+                    <item value="1942"/>
+                    <item value="1943"/>
+                    <item value="1944"/>
+                    <item value="1945"/>
+                    <item value="1946"/>
+                    <item value="1947"/>
+                    <item value="1948"/>
+                    <item value="1949"/>
+                    <item value="1950"/>
+                    <item value="1951"/>
+                    <item value="1952"/>
+                    <item value="1953"/>
+                    <item value="1954"/>
+                    <item value="1955"/>
+                    <item value="1956"/>
+                    <item value="1957"/>
+                    <item value="1958"/>
+                    <item value="1959"/>
+                    <item value="1960"/>
+                    <item value="1961"/>
+                    <item value="1962"/>
+                    <item value="1963"/>
+                    <item value="1964"/>
+                    <item value="1965"/>
+                    <item value="1966"/>
+                    <item value="1967"/>
+                    <item value="1968"/>
+                    <item value="1969"/>
+                    <item value="1970"/>
+                    <item value="1971"/>
+                    <item value="1972"/>
+                    <item value="1973"/>
+                    <item value="1974"/>
+                    <item value="1975"/>
+                    <item value="1976"/>
+                    <item value="1977"/>
+                    <item value="1978"/>
+                    <item value="1979"/>
+                    <item value="1980"/>
+                    <item value="1981"/>
+                    <item value="1982"/>
+                    <item value="1983"/>
+                    <item value="1984"/>
+                    <item value="1985"/>
+                    <item value="1986"/>
+                    <item value="1987"/>
+                    <item value="1988"/>
+                    <item value="1989"/>
+                    <item value="1990"/>
+                    <item value="1991"/>
+                    <item value="1992"/>
+                    <item value="1993"/>
+                    <item value="1994"/>
+                    <item value="1995"/>
+                    <item value="1996"/>
+                    <item value="1997"/>
+                    <item value="1998"/>
+                    <item value="1999"/>
+                    <item value="2000"/>
+                    <item value="2001"/>
+                    <item value="2002"/>
+                    <item value="2003"/>
+                    <item value="2004"/>
+                    <item value="2005"/>
+                    <item value="2006"/>
+                    <item value="2007"/>
+                    <item value="2008"/>
+                    <item value="2009"/>
+                    <item value="2010"/>
+                    <item value="2011"/>
+                    <item value="2012"/>
+                    <item value="2013"/>
+                    <item value="2014"/>
+                    <item value="2015"/>
+                    <item value="2016"/>
+                    <item value="2017"/>
+                    <item value="2018"/>
+                    <item value="2019"/>
+                    <item value="2020"/>
+                    <item value="2021"/>
+                    <item value="2022"/>
+                    <item value="2023"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+    </children>
+  </grid>
+</form>
