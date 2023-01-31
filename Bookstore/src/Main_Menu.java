@@ -8,6 +8,7 @@ public class Main_Menu extends JFrame {
     private JButton Button_Order;
     private JButton Button_Logout;
     private JButton Button_Exit;
+    private JButton Button_Client;
 
 
     public Main_Menu() {
@@ -16,6 +17,7 @@ public class Main_Menu extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setSize(300, 300);
+
 
         Button_Browse.addActionListener(new ActionListener() {
             @Override

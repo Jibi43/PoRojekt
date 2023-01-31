@@ -20,13 +20,14 @@ public class Order extends JFrame {
         this.setContentPane(OrderPanel);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setSize(500, 500);
+        this.setSize(500, 600);
 
         DefaultTableModel model = (DefaultTableModel) Books.getModel();
         Make_Order_Table.setModel(model);
         String[] Column_Names = {"Ordered"};
         DefaultTableModel Orders = new DefaultTableModel(Column_Names,0);
         Order_Table.setModel(Orders);
+
 
 
 
@@ -52,8 +53,13 @@ public class Order extends JFrame {
         Button_Remove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int selectedItem = Order_Table.getSelectedRow();
-                Orders.removeRow(selectedItem);
+                if(Login.per==0) {
+                    JOptionPane.showMessageDialog(OrderPanel, "You lack administrative permission");
+                }
+                else {
+                    int selectedItem = Order_Table.getSelectedRow();
+                    Orders.removeRow(selectedItem);
+                }
             }
         });
         Return_Button.addActionListener(new ActionListener() {

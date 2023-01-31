@@ -8,11 +8,13 @@ public class Login extends JFrame {
     private JPasswordField Password_Field;
     private JButton Button_Login;
 
+    public static int per = 0;
+
     public static void main(String[] args) {
         Login login = new Login();
         login.setLocationRelativeTo(null);
         login.setVisible(true);
-        boolean permission = false;
+
     }
     public Login(){
         super("Login");
@@ -32,6 +34,7 @@ public class Login extends JFrame {
                     JOptionPane.showMessageDialog(Login_Panel,"You need to enter more information");
                 }
                 else if(log.equals("Admin") && pass.equals("Password")) {
+                    per = 1;
                     Main_Menu menu = new Main_Menu();
                     menu.setVisible(true);
                     dispose();

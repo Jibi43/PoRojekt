@@ -1,7 +1,10 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Arrays;
 
 public class Browse extends JFrame{
@@ -22,7 +25,7 @@ public class Browse extends JFrame{
         this.setContentPane(Browse_Panel);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setSize(500,500);
+        this.setSize(500,600);
 
         String[] Column_Names = {"Title","Author","Genre","Year"};
 
@@ -53,7 +56,7 @@ public class Browse extends JFrame{
         Object[] book21 = {"Śnieg", "Orhan Pamuk", "powieść", 2002};
         Object[] book22 = {"Portret Doriana Graya", "Oscar Wilde", "powieść gotycka", 1890};
         Object[] book23 = {"Golem", "Gustav Meyrink", "powieść grozy", 1915};
-        Object[] book24 = {"Kusiciel", "Hermann Broch", "powieść fikcyjna", 1953,};
+        Object[] book24 = {"Kusiciel", "Hermann Broch", "powieść fikcyjna", 1953};
         Object[] book25 = {"Tajemnice zamku Udolpho", "Ann Radcliffe", "powieść gotycka", 1794};
         Object[] book26 = {"Puste niebo", "Radek Rak", "powieść fikcyjna", 2016};
 
@@ -68,6 +71,10 @@ public class Browse extends JFrame{
         Button_Add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(Login.per==0) {
+                    JOptionPane.showMessageDialog(Browse_Panel, "You lack administrative permission");
+                }
+                else{
                 String title = Text_Title.getText();
                 String author = Text_Author.getText();
                 String genre = Text_Genre.getText();
@@ -84,14 +91,20 @@ public class Browse extends JFrame{
                     Combo_Year.setSelectedIndex(0);
                 }
             }
+            }
         });
 
 
         Button_Remove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int selectedItem = Book_Table.getSelectedRow();
-                Shelf.removeRow(selectedItem);
+                if(Login.per==0) {
+                    JOptionPane.showMessageDialog(Browse_Panel, "You lack administrative permission");
+                }
+                else {
+                    int selectedItem = Book_Table.getSelectedRow();
+                    Shelf.removeRow(selectedItem);
+                }
 
 
 
