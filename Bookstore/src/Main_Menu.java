@@ -15,7 +15,6 @@ public class Main_Menu extends JFrame {
         super("Main menu");
         this.setContentPane(Panel_Main);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
         this.setSize(300, 300);
 
 
@@ -23,6 +22,7 @@ public class Main_Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Browse browse = new Browse();
+                browse.setLocationRelativeTo(null);
                 browse.setVisible(true);
                 dispose();
             }
@@ -33,7 +33,8 @@ public class Main_Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Browse books = new Browse();
-                Order order = new Order(Browse.More_Table);
+                Order order = new Order();
+                order.setLocationRelativeTo(null);
                 order.setVisible(true);
                 dispose();
 
@@ -51,10 +52,22 @@ public class Main_Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Login login = new Login();
+                login.setLocationRelativeTo(null);
                 login.setVisible(true);
                 dispose();
 
             }
         });
+        Button_Client.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Clients client = new Clients();
+                client.setLocationRelativeTo(null);
+                client.setVisible(true);
+                dispose();
+
+            }
+        });
     }
+
 }
