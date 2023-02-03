@@ -1,10 +1,9 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.Arrays;
 
 public class Browse extends JFrame{
     private JPanel Browse_Panel;
@@ -17,6 +16,8 @@ public class Browse extends JFrame{
     private JTextField Text_Genre;
     private JTextField Text_Author;
     private JComboBox Combo_Year;
+    private JTextField Search_Field;
+    private JButton Search_Button;
     public static JTable More_Table;
 
     public Browse(){
@@ -125,6 +126,15 @@ public class Browse extends JFrame{
                 menu.setLocationRelativeTo(null);
                 menu.setVisible(true);
                 dispose();
+            }
+        });
+        Search_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel model = (DefaultTableModel) Book_Table.getModel();
+                TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+                Book_Table.setRowSorter(tr);
+                tr.setRowFilter(RowFilter.regexFilter("(?i)" + Search_Field.getText().trim()));
             }
         });
     }
