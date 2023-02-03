@@ -15,6 +15,7 @@ public class Order extends JFrame {
     private JTextField Search_Field;
     private JTable Make_Order_Table;
     private JButton Search_Button;
+    private JButton Button_Refresh;
 
     public Order() {
         super("Order");
@@ -26,6 +27,9 @@ public class Order extends JFrame {
         String[] Column_Names = {"Title","Author","Genre","Year"};
         DefaultTableModel order = new DefaultTableModel(Column_Names,0);
         Make_Order_Table.setModel(order);
+        String[] Column_Names2 = {"Title","Username"};
+        DefaultTableModel order2 = new DefaultTableModel(Column_Names2,0);
+        Order_Table.setModel(order2);
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "root");
@@ -43,11 +47,28 @@ public class Order extends JFrame {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "root");
+            Statement statement = connection.createStatement();
+
+            String sql = "SELECT * FROM Orders";
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()){
+                Object[] ord = {resultSet.getString("book_title"), resultSet.getString("client_username")};
+                order2.addRow(ord);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
 
 
-        Search_Button.addActionListener(new ActionListener() {
+
+
+
+            Search_Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultTableModel model = (DefaultTableModel) Make_Order_Table.getModel();
@@ -63,13 +84,21 @@ public class Order extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = Make_Order_Table.getSelectedRow();
                 if (selectedRow != -1) {
-                    DefaultTableModel model = (DefaultTableModel) Order_Table.getModel();
-                    model.addRow(new Object[] {
-                            Make_Order_Table.getValueAt(selectedRow, 0),
-                            Make_Order_Table.getValueAt(selectedRow, 1),
-                            Make_Order_Table.getValueAt(selectedRow, 2),
-                            Make_Order_Table.getValueAt(selectedRow, 3)
-                    });
+                    try {
+                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "root");
+                        Statement stmt = conn.createStatement();
+                        String Title = Make_Order_Table.getValueAt(selectedRow, 0).toString();
+                        String clientUsername = "";
+                        ResultSet rs2 = stmt.executeQuery("SELECT * FROM clients WHERE idClients = '" + Login.per + "'");
+                        if (rs2.next()) {
+                            clientUsername = rs2.getString("Username");
+                        }
+                        String sql = "INSERT INTO orders (book_title, client_username) VALUES ('" + Title + "', '" + clientUsername + "')";
+                        stmt.executeUpdate(sql);
+                        conn.close();
+                    } catch (SQLException ex) {
+                        System.out.println(ex.getMessage());
+                    }
                 }
             }
         });
@@ -77,12 +106,27 @@ public class Order extends JFrame {
         Button_Remove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Login.per==0) {
+                if (Login.per == 0) {
                     JOptionPane.showMessageDialog(OrderPanel, "You lack administrative permission");
-                }
-                else {
-                    int selectedItem = Order_Table.getSelectedRow();
-                    order.removeRow(selectedItem);
+                } else {
+                    int selectedRow = Order_Table.getSelectedRow();
+                    if (selectedRow == -1) {
+                        JOptionPane.showMessageDialog(OrderPanel, "Please select a row to remove");
+                    } else {
+                        try {
+                            String title = (String) Order_Table.getValueAt(selectedRow, 0);
+                            String username = (String) Order_Table.getValueAt(selectedRow, 3);
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "root");
+                            Statement stmt = con.createStatement();
+                            stmt.executeUpdate("DELETE FROM Orders WHERE book_title='" + title + "AND client_username='" + username + "'");
+                            order2.removeRow(selectedRow);
+                            JOptionPane.showMessageDialog(OrderPanel, "Book removed successfully");
+                            con.close();
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(OrderPanel, "Error while removing book");
+                            ex.printStackTrace();
+                        }
+                    }
                 }
             }
         });
@@ -94,6 +138,28 @@ public class Order extends JFrame {
                 menu.setVisible(true);
                 dispose();
 
+            }
+        });
+        Button_Refresh.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                order2.setRowCount(0);
+                try {
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "root");
+
+                    Statement statement = connection.createStatement();
+
+                    String sql = "SELECT * FROM orders";
+                    ResultSet resultSet = statement.executeQuery(sql);
+
+                    while (resultSet.next()){
+                        Object[] ord = {resultSet.getString("book_title"), resultSet.getString("client_username")};
+                        order2.addRow(ord);
+                    }
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
